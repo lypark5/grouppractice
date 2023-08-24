@@ -1,4 +1,5 @@
-from .models import db
+from .db import db
+
 
 class Pokemon(db.Model):
   __tablename__ = 'pokemons'

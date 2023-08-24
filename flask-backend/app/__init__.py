@@ -1,9 +1,10 @@
 from flask import Flask, render_template, redirect
 from .config import Config
 # from .shipping_form import ShippingForm
-# from flask_migrate import Migrate
+from flask_migrate import Migrate
 from .route.items import items
 from .route.pokemon import pokemon
+from .models import db
 
 # import statement for CSRF
 from flask_wtf.csrf import CSRFProtect, generate_csrf
