@@ -23,7 +23,7 @@ with app.app_context():
       {
         "number": 2,
         "imageUrl": '/images/pokemon_snaps/2.svg',
-        "name": 'Ivysaur',
+        "name": 'Ivysaur_1',
         "attack": 62,
         "defense": 63,
         "type": 'grass',
@@ -65,7 +65,7 @@ with app.app_context():
       {
         "number": 5,
         "imageUrl": '/images/pokemon_snaps/5.svg',
-        "name": 'Charmeleon',
+        "name": 'Charmeleon_1',
         "attack": 64,
         "defense": 58,
         "type": 'fire',
@@ -80,7 +80,7 @@ with app.app_context():
       {
         "number": 6,
         "imageUrl": '/images/pokemon_snaps/6.svg',
-        "name": 'Charizard',
+        "name": 'Charizard_2',
         "attack": 84,
         "defense": 78,
         "type": 'fire',
@@ -232,8 +232,16 @@ with app.app_context():
     prices = randint(1, 100)
     happiness = randint(1, 100)
 
-    [db.session.add(Pokemon(**pokemon)) for pokemon in pokemons]
+    # [db.session.add(Pokemon(**pokemon)) for pokemon in pokemons]
+    # new_pokemon = Pokemon(number=1, imageUrl='/images/pokemon_snaps/1.svg', name="Bulbasaur", attack=49, defense=49, type='grass', moves='tackle, vine whip', captured=True)
+  
+    for pokemon in pokemons:
+      pokemon['moves'] = ', '.join(pokemon['moves'])
+    
+    for pokemon in pokemons:
+       db.session.add(Pokemon(**pokemon))
 
+    
     for index in range(0,11):
         db.session.add(Item(name= choice(item_names), price= prices, happiness = happiness, imageUrl=choice(images)))
 
