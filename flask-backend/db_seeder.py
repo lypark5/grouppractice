@@ -234,14 +234,14 @@ with app.app_context():
 
     # [db.session.add(Pokemon(**pokemon)) for pokemon in pokemons]
     # new_pokemon = Pokemon(number=1, imageUrl='/images/pokemon_snaps/1.svg', name="Bulbasaur", attack=49, defense=49, type='grass', moves='tackle, vine whip', captured=True)
-  
+
     for pokemon in pokemons:
       pokemon['moves'] = ', '.join(pokemon['moves'])
-    
+
     for pokemon in pokemons:
        db.session.add(Pokemon(**pokemon))
 
-    
+
     for index in range(0,11):
         db.session.add(Item(name= choice(item_names), price= prices, happiness = happiness, imageUrl=choice(images)))
 

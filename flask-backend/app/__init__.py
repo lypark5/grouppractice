@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from .route.items import items
 from .route.pokemon import pokemon
 from .models import db
+import os
 
 # import statement for CSRF
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -29,5 +30,5 @@ def inject_csrf_token(response):
     return response
 
 
-app.register_blueprint(items, url_prefix='/items')
-app.register_blueprint(pokemon, url_prefix='/pokemon')
+app.register_blueprint(items, url_prefix='/api/items')
+app.register_blueprint(pokemon, url_prefix='/api/pokemon')

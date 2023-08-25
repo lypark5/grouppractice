@@ -10,3 +10,13 @@ class Item(db.Model):
   pokemonId = db.Column(db.Integer, db.ForeignKey('pokemons.id'))
 
   pokemon = db.relationship('Pokemon', back_populates='items')
+
+  def dict_method(self):
+    return {
+      "id": self.id,
+      "happiness": self.happines,
+      "imageUrl": self.imageUrl,
+      "name": self.name,
+      "price": self.price,
+      "pokemonId": self.pokemonId
+    }

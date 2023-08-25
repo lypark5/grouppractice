@@ -16,3 +16,18 @@ class Pokemon(db.Model):
   captured = db.Column(db.Boolean)
 
   items = db.relationship('Item', back_populates='pokemon')
+
+  def dict_method(self):
+    return {
+        "id": self.id,
+        "number": self.number,
+        "attack": self.attack,
+        "defense": self.defense,
+        "imageUrl": self.imageUrl,
+        "name": self.name,
+        "type": self.type,
+        "moves": self.moves,
+        "encounterRate": self.encounterRate,
+        "catchRate": self.catchRate,
+        "captured": self.captured
+    }

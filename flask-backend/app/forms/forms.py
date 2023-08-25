@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, StringField, IntegerField, DateField, SelectField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, NumberRange
-from ..models import types
+from ..models.pokemon_type import types
 
 
 class CreatePokemon(FlaskForm):
@@ -12,7 +12,7 @@ class CreatePokemon(FlaskForm):
   name = StringField('Name', validators=[DataRequired()])
   move1 = StringField('Move 1', validators=[DataRequired()])
   move2 = StringField('Move 2', validators=[DataRequired()])
-  type = SelectField('Type', choices=types)
+  type = SelectField('Type', choices=[types])
   submit = SubmitField('CREATE NEW POKEMON')
 
 class CreateItem(FlaskForm):
