@@ -30,7 +30,6 @@ def single_pokemon(id):
 
 @pokemon.route("/types")
 def get_types():
-    print('types route')
     # return {"types": types}
     return types
 
@@ -40,22 +39,24 @@ def create_pokemon():
     form['csrf_token'].data = request.cookies['csrf_token']
     # print('Form Data brackets...', form.data['move1'])
     # print('Form Data...', form.data['move2'])
-    print('MOVES COMBINED...', str(form.data["move1"]) + ", " + str(form.data["move2"]))
-
+    
     if form.validate_on_submit():
         data = form.data
-        # moves = str(data["move1"] + ", " + data["move2"])
+        moves = str(data["move1"] + ", " + data["move2"])
         new_pokemon = Pokemon(
             number=data["number"],
             attack=data["attack"],
             defense=data['defense'],
             imageUrl=data['imageUrl'],
             name=data['name'],
-            moves=str(data['moves']),
+            moves=moves,
             type=data['type']
             )
         db.session.add(new_pokemon)
         db.session.commit()
+        new_pokemon = new_pokemon.dict_method()
+        new_pokemon['moves'] = [data["move1"],data["move2"]]
+        return new_pokemon
 
     if form.errors:
         print(form.errors)

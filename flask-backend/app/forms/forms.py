@@ -12,7 +12,7 @@ class CreatePokemon(FlaskForm):
   name = StringField('Name', validators=[DataRequired()])
   move1 = StringField('Move 1', validators=[DataRequired()])
   move2 = StringField('Move 2', validators=[DataRequired()])
-  type = SelectField('Type', choices=[types])
+  type = SelectField('Type', choices=[(type, type) for type in types])
   submit = SubmitField('CREATE NEW POKEMON')
 
 class CreateItem(FlaskForm):
