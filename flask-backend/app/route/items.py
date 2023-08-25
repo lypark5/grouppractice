@@ -9,3 +9,4 @@ def home(pokemonId):
     # print(item)
     for item in items:
         return item.dict_method()
+    

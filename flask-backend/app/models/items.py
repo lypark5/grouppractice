@@ -14,7 +14,7 @@ class Item(db.Model):
   def dict_method(self):
     return {
       "id": self.id,
-      "happiness": self.happines,
+      "happiness": self.happiness,
       "imageUrl": self.imageUrl,
       "name": self.name,
       "price": self.price,
